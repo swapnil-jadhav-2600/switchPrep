@@ -1,2 +1,2 @@
 # switchPrep
-All the solution of DSA question
+Solutions for all the DSA questions.
