@@ -1,22 +1,22 @@
-# creting all the necessary functions for a tree
+from collections import deque
 
-# Add Edge : Function add edge between two nodes x,,y
-def addEdge(x,y,adj):
-    adj[x] = y
-    adj[y] = x
+# Function to add an edge between vertices x and y
+def addEdge(x, y, adj):
+    adj[x].append(y)
+    adj[y].append(x)
 
-# Print Parent : Funstion to print parent of each node
-def printParent(node,adj,parent):
-    # check if current node is root 
-    if parent == 0 :
+# Function to print the parent of each node
+def printParents(node, adj, parent):
+    # current node is Root, thus, has no parent
+    if parent == 0:
         print("{}->Root".format(node))
     else:
-        print("{}->{}".format(node,parent))
+        print("{}->{}".format(node, parent))
 
-    # Using DFS : Depth First Search
+    # Using DFS
     for cur in adj[node]:
         if cur != parent:
-            printParent(cur,adj,node)
+            printParents(cur, adj, node)
      
 
 
