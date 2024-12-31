@@ -19,6 +19,25 @@ def printParents(node, adj, parent):
             printParents(cur, adj, node)
      
 
+# print all the Children nodes
+def printChildren(Root,adj):
+    q  = deque()
+    q.append(Root)
+    # v array : to keep track of visited nodes in tree
+    v = [0]*len(adj)
+    print(f"visited array : {v}, q : {q}")
+    # BFS : Brdth first search
+    while q:
+        print(f"q : {q}")
+        node = q.popleft()
+        print(f"node : {node}")
+        v[node] = 1
+        print("{}->".format(node)),
+        for cur in adj[node]:
+            if v[cur] ==0:
+                print(cur),
+                q.append(cur)
+        print(v)
 
 # Driver code
 N = 7
@@ -35,4 +54,8 @@ addEdge(2, 5, adj)
 addEdge(2, 6, adj)
 addEdge(4, 7, adj)
 
-printParent(Root,adj,0)
+print(adj)
+# printParents(Root,adj,0)
+
+print("The children of each node are:")
+printChildren(Root, adj)
